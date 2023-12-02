@@ -1,45 +1,48 @@
 ## To design a system that collects the location data of devices connected to it and identifies free time slots based on the busy times of two individuals, you can follow these high-level steps:
 
-1. **Data Collection and Storage:**
-   - Implement a data collection mechanism to gather location data from devices. This could involve a mobile app, GPS tracking, or integration with other location-aware services.
-   - Store the location data securely in a database. Consider using a relational database or a NoSQL database based on the specific requirements and scalability needs.
+### System Design:
 
-2. **User Authentication and Authorization:**
-   - Implement a secure user authentication system to ensure that only authorized individuals can access their data.
-   - Assign appropriate roles and permissions to users to control access to sensitive information.
+1. **Location Data Collection:**
+   - Implement a location data collection mechanism to receive and store real-time location data from devices connected to the system. This could involve a mobile app or other location-aware services.
 
-3. **Busy Time Tracking:**
-   - Allow users to input their busy times into the system. This could be done through a user interface in the mobile app or a web application.
-   - Store busy time data in the database and associate it with each user.
+2. **User Profile:**
+   - Each user has a profile containing their busy times. Users can input their busy time slots into the system.
 
-4. **Free Time Calculation:**
-   - Create an algorithm to calculate free time slots based on the busy times of two individuals.
-   - Compare the busy times of the two individuals and identify the overlapping busy periods.
-   - The remaining time slots without overlaps are considered as free time.
+3. **Free Time Calculation:**
+   - When a request is made to find free time slots for two individuals, retrieve their respective busy time slots from their profiles.
 
-5. **Notification System:**
-   - Implement a notification system to alert users about their free time slots or to notify them about potential overlapping commitments.
-   - Use push notifications, emails, or other communication channels based on user preferences.
+   - Identify overlapping busy time slots between the two users.
 
-6. **Privacy and Security:**
-   - Ensure compliance with privacy regulations and implement robust security measures to protect user data.
-   - Consider anonymizing or encrypting location data to enhance privacy.
+   - Calculate the free time slots based on the gaps between the busy time slots.
 
-7. **User Interface:**
-   - Develop a user-friendly interface to allow users to view their busy and free time slots easily.
-   - Provide options for users to customize and adjust their schedules.
+4. **Output:**
+   - Provide the list of free time slots as the output, including start and end times.
 
-8. **Scalability and Performance:**
-   - Design the system to handle a large number of users and devices.
-   - Optimize database queries and system architecture for performance and scalability.
+5. **User Notification:**
+   - Optionally, implement a notification system to alert users about their free time slots.
 
-9. **Integration with Calendar Systems:**
-   - Allow users to integrate their free time slots with their existing calendar systems (Google Calendar, Outlook, etc.) for better scheduling and planning.
+### Example Output:
 
-10. **Logging and Monitoring:**
-    - Implement logging and monitoring functionalities to track system activities, identify issues, and ensure smooth operation.
+Given User 1's busy times:
+- 9:00 AM - 10:30 AM
+- 1:00 PM - 2:30 PM
+- 4:00 PM - 5:00 PM
 
-Remember to adapt the design based on specific use cases and requirements. Regularly update and maintain the system to address evolving needs and potential security vulnerabilities.
+Given User 2's busy times:
+- 10:00 AM - 11:30 AM
+- 1:30 PM - 3:00 PM
+
+The system calculates the free time slots:
+- 11:30 AM - 1:00 PM
+- 3:00 PM - 4:00 PM
+- 5:00 PM onwards
+
+### Key Points:
+
+- The system focuses on efficiently calculating free time slots based on the busy times of two individuals.
+- Ensure that the solution is user-friendly and provides clear output.
+- Consider privacy and security measures, especially when dealing with location data.
+- The system can be expanded to support additional features like user authentication, calendar integration, and more based on specific requirements.
 
 ## Code
 
